@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Open-source website platform for J70 sailing fleets",
   "main": ".eleventy.js",
-  "type": "module",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",

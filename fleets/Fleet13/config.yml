@@ -1,0 +1,47 @@
+name: Fleet 13
+location: Southern Lake Michigan
+fleetNumber: 13
+fleetSlug: Fleet13
+
+# Contact Information
+fleetCaptain:
+  name: Doug Fritz
+  email: doug@f2strategy.com
+  phone: 415-844-0641
+
+# Branding
+branding:
+  primaryColor: '#0047AB'      # Chicago flag blue
+  secondaryColor: '#FFFFFF'    # White with stars
+  accentColor: '#CE1126'       # Chicago flag red
+
+# Social Media
+socialMedia:
+  facebook: 'https://www.facebook.com/pages/J70-Fleet-13-Southern-Lake-Michigan/425597447579006'
+  email: 'fleet13@j70fleet.com'
+
+# Fleet Description
+description: |
+  Fleet 13 of the J70 Class Association,
+  based in Southern Lake Michigan.
+  Home to some of the Midwest's most competitive sailors,
+  hosting exciting racing and coaching for all skill levels.
+
+# External Links
+links:
+  classAssociation: 'https://j70class.com'
+  regattaNetwork: 'https://www.regattanetwork.com/membermgmt/J70/member_list.php?fleet=13'
+  classContacts: 'https://j70class.com/class-office/fleet-contacts/'
+
+# Site Configuration
+site:
+  baseUrl: '/Fleet13/'
+  title: 'J70 Fleet 13'
+  tagline: 'Southern Lake Michigan Racing Community'
+
+# Content Paths
+content:
+  events: 'events/'
+  races: 'races/'
+  news: 'news/'
+  gallery: 'gallery/'

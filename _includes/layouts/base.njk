@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - J70 Fleet</title>
+    <meta name="description" content="{{ description or 'J70 Sailing Fleet Website' }}">
+    <link rel="stylesheet" href="/css/style.css">
+    {% if primaryColor %}
+    <style>
+        :root {
+            --primary-color: {{ primaryColor }};
+            --secondary-color: {{ secondaryColor or '#ffffff' }};
+            --accent-color: {{ accentColor or '#0047AB' }};
+        }
+    </style>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    {% if logo %}
+                        <img src="{{ logo }}" alt="Logo" class="site-logo">
+                    {% endif %}
+                    <h1><a href="{{ homeUrl }}">{{ siteName }}</a></h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="{{ homeUrl }}">Home</a></li>
+                        <li><a href="{{ homeUrl }}events/">Calendar</a></li>
+                        <li><a href="{{ homeUrl }}races/">Results</a></li>
+                        <li><a href="{{ homeUrl }}photos/">Photos</a></li>
+                        <li><a href="{{ homeUrl }}crew/">Crew</a></li>
+                        <li><a href="{{ homeUrl }}news/">News</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            {{ content | safe }}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>{{ fleetName }}</h3>
+                    <p>{{ fleetDescription }}</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><strong>Fleet Captain:</strong> {{ captainName }}<br>
+                    <strong>Email:</strong> <a href="mailto:{{ captainEmail }}">{{ captainEmail }}</a><br>
+                    <strong>Phone:</strong> {{ captainPhone }}</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="https://j70class.com">J70 Class Association</a></li>
+                        <li><a href="{{ regattaNetworkUrl }}" target="_blank">Regatta Network</a></li>
+                        {% if facebookUrl %}
+                            <li><a href="{{ facebookUrl }}" target="_blank">Facebook</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 {{ fleetName }}. Built with <a href="https://www.11ty.dev">11ty</a> and ⛵.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "j70-multi-fleet-site",
+  "version": "1.0.0",
+  "description": "Open-source website platform for J70 sailing fleets",
+  "main": ".eleventy.js",
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "debug": "DEBUG=Eleventy* eleventy",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "j70",
+    "sailing",
+    "fleet",
+    "website",
+    "eleventy",
+    "static-site-generator"
+  ],
+  "author": "Fleet 13",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^4.0.0",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "sass": "^1.69.0"
+  },
+  "dependencies": {}
+}

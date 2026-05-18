@@ -3,27 +3,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - J70 Fleet</title>
-    <meta name="description" content="{{ description or 'J70 Sailing Fleet Website' }}">
-    <link rel="stylesheet" href="/css/style.css">
-    {% if primaryColor %}
+    <title>{{ title }} - J70 Fleet 13</title>
+    <meta name="description" content="{{ description or 'J70 Fleet 13 - Southern Lake Michigan' }}">
     <style>
         :root {
-            --primary-color: {{ primaryColor }};
-            --secondary-color: {{ secondaryColor or '#ffffff' }};
-            --accent-color: {{ accentColor or '#0047AB' }};
+            --primary-color: #0047AB;
+            --secondary-color: #FFFFFF;
+            --accent-color: #CE1126;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --border-color: #e0e0e0;
+            --bg-light: #f9f9f9;
+            --spacing: 1.5rem;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+
+        .site-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #003d7a 100%);
+            color: white;
+            padding: var(--spacing) 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .site-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-section h1 {
+            margin: 0;
+            font-size: 1.75rem;
+        }
+
+        .logo-section h1 a {
+            color: white;
+        }
+
+        .logo-section h1 a:hover {
+            color: var(--accent-color);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .main-nav a {
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .site-main {
+            min-height: calc(100vh - 300px);
+            padding: calc(var(--spacing) * 2) 0;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: var(--spacing);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing);
+            margin: var(--spacing) 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing) 0;
+            background: white;
+        }
+
+        thead {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tbody tr:hover {
+            background: var(--bg-light);
+        }
+
+        .event-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: var(--spacing);
+            padding: var(--spacing);
+            border-left: 4px solid var(--primary-color);
+            background: var(--bg-light);
+            border-radius: 4px;
+            margin-bottom: var(--spacing);
+        }
+
+        .event-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .event-details h3 {
+            margin: 0 0 0.5rem 0;
+            border: none;
+            padding: 0;
+        }
+
+        .event-details p {
+            margin: 0.25rem 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: var(--spacing) 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .crew-member {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .crew-member-info {
+            flex: 1;
+        }
+
+        .crew-member-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .crew-member-role {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin: 0.25rem 0 0 0;
+        }
+
+        .site-footer {
+            background: var(--dark-text);
+            color: white;
+            padding: calc(var(--spacing) * 2) 0;
+            margin-top: calc(var(--spacing) * 3);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing);
+            margin-bottom: var(--spacing);
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+        }
+
+        .footer-section a {
+            color: white;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin: 0.5rem 0;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --spacing: 1rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .main-nav a {
+                display: block;
+            }
+
+            .event-item {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .gallery img {
+                height: 150px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+
+        .hidden {
+            display: none;
         }
     </style>
-    {% endif %}
 </head>
 <body>
     <header class="site-header">
         <div class="container">
             <div class="header-content">
                 <div class="logo-section">
-                    {% if logo %}
-                        <img src="{{ logo }}" alt="Logo" class="site-logo">
-                    {% endif %}
                     <h1><a href="{{ homeUrl }}">{{ siteName }}</a></h1>
                 </div>
                 <nav class="main-nav">

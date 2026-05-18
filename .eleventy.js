@@ -10,9 +10,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget('./fleets/**/config.yml');
 
   // Copy static assets
-  eleventyConfig.addPassthroughCopy('./src/css');
-  eleventyConfig.addPassthroughCopy('./fleets/**/images');
-  eleventyConfig.addPassthroughCopy('./fleets/**/logo.*');
+  eleventyConfig.addPassthroughCopy('src/css');
+  eleventyConfig.addPassthroughCopy('fleets/**/images');
+  eleventyConfig.addPassthroughCopy('fleets/**/logo.*');
 
   // Global data - load fleet configs
   eleventyConfig.addGlobalData('fleets', function() {
